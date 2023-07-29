@@ -4,9 +4,9 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2023/07/29/Java%20%E5%9F%BA%E7%A1%80/"/>
-    <url>/2023/07/29/Java%20%E5%9F%BA%E7%A1%80/</url>
+    <title>rookie Java</title>
+    <link href="/2023/07/29/rookie%20Java/"/>
+    <url>/2023/07/29/rookie%20Java/</url>
     
     <content type="html"><![CDATA[<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">map.merge(key, newValue, (oldValue, providedValue) -&gt; oldValue + providedValue);<br></code></pre></td></tr></table></figure><p><code>map.merge()</code>方法的行为如下：</p><ul><li>如果键不存在于Map中，将使用提供的键值对直接添加到Map中。</li><li>如果键已经存在于Map中，<code>remappingFunction</code>将被调用，它会传递旧值和提供的新值作为参数，然后返回合并后的值，最后用这个值替换掉原有的值。</li></ul><p>这个方法的返回值是合并后的值。</p>]]></content>
     
@@ -17,11 +17,11 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2023/07/27/rookie%20hexo/"/>
-    <url>/2023/07/27/rookie%20hexo/</url>
+    <title>rookie Hexo</title>
+    <link href="/2023/07/27/rookie%20Hexo/"/>
+    <url>/2023/07/27/rookie%20Hexo/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo cl<br><br>$ hexo g<br><br>$ hexo s<br><br>$ hexo d<br></code></pre></td></tr></table></figure>]]></content>
     
     
     
