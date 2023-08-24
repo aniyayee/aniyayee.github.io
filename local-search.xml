@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>bug fix</title>
+    <link href="/2023/08/24/bug%20fix/"/>
+    <url>/2023/08/24/bug%20fix/</url>
+    
+    <content type="html"><![CDATA[<h3 id="端口冲突"><a href="#端口冲突" class="headerlink" title="端口冲突"></a>端口冲突</h3><blockquote><p>Identify and stop the process that’s listening on port 8080 or configure this application to listen on another port.</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看端口状态</span><br>$ netstat 8080<br><br><span class="hljs-comment"># 查看占用端口的进程号</span><br>$ netstat -ano | findstr 8080<br><br><span class="hljs-comment"># 终止进程</span><br>$ taskkill /F /PID 8456<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>rookie Java</title>
     <link href="/2023/07/29/rookie%20Java/"/>
     <url>/2023/07/29/rookie%20Java/</url>
