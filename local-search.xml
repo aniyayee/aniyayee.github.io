@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>rookie-Git</title>
+    <link href="/2023/08/25/rookie-Git/"/>
+    <url>/2023/08/25/rookie-Git/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Quick-setup"><a href="#Quick-setup" class="headerlink" title="Quick setup"></a>Quick setup</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 全局配置用户名</span><br>$ git config --global user.name <span class="hljs-string">&quot;username&quot;</span><br><br><span class="hljs-comment"># 全局配置邮箱</span><br>$ git config --global user.email <span class="hljs-string">&quot;eamil@gmail.com&quot;</span><br><br><span class="hljs-comment"># 查看git配置信息</span><br>$ git config --list<br><br><span class="hljs-comment"># 查看git用户名</span><br>$ git config user.name<br><br><span class="hljs-comment"># 查看邮箱配置</span><br>$ git config user.email<br></code></pre></td></tr></table></figure><h1 id="GitHub-setup"><a href="#GitHub-setup" class="headerlink" title="GitHub setup"></a>GitHub setup</h1><p><strong>create a new repository on the command line</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;# rookie&quot;</span> &gt;&gt; README.md<br><br>$ git init<br><br>$ git add README.md<br><br>$ git commit -m <span class="hljs-string">&quot;Initial commit&quot;</span><br><br>$ git branch -M master<br><br>$ git remote add origin git@github.com:arloyee/rookie.git <br><br>$ git push -u origin master<br></code></pre></td></tr></table></figure><p><strong>…or push an existing repository from the command line</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git remote add origin git@github.com:arloyee/rookie.git git branch -M master <br><br>$ git push -u origin master<br></code></pre></td></tr></table></figure><h1 id="提交规范"><a href="#提交规范" class="headerlink" title="提交规范"></a>提交规范</h1><p><strong>主要type</strong></p><p><em>feat:  增加新功能</em><br><em>fix:    修复bug</em></p><p><strong>特殊type</strong></p><p><em>docs:       只改动了文档相关的内容</em><br><em>style:       不影响代码含义的改动，例如去掉空格、改变缩进、增删分号</em><br><em>build:      构造工具的或者外部依赖的改动，例如webpack，npm</em><br><em>refactor:  代码重构时使用</em><br><em>revert:    执行git revert打印的message</em></p><p><strong>暂不使用type</strong></p><p><em>test:       添加测试或者修改现有测试</em><br><em>perf:      提高性能的改动</em><br><em>ci:          与CI（持续集成服务）有关的改动</em><br><em>chore:   不修改src或者test的其他修改，例如构建过程或辅助工具的变动</em></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>rookie-Spring</title>
     <link href="/2023/08/24/rookie-Spring/"/>
     <url>/2023/08/24/rookie-Spring/</url>
@@ -17,9 +30,9 @@
   
   
   <entry>
-    <title>bug-fix</title>
-    <link href="/2023/08/24/bug-fix/"/>
-    <url>/2023/08/24/bug-fix/</url>
+    <title>BUG-FIX</title>
+    <link href="/2023/08/24/BUG-FIX/"/>
+    <url>/2023/08/24/BUG-FIX/</url>
     
     <content type="html"><![CDATA[<h3 id="端口冲突"><a href="#端口冲突" class="headerlink" title="端口冲突"></a>端口冲突</h3><blockquote><p>Identify and stop the process that’s listening on port 8080 or configure this application to listen on another port.</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看端口状态</span><br>$ netstat 8080<br><br><span class="hljs-comment"># 查看占用端口的进程号</span><br>$ netstat -ano | findstr 8080<br><br><span class="hljs-comment"># 终止进程</span><br>$ taskkill /F /PID 8456<br></code></pre></td></tr></table></figure>]]></content>
     
