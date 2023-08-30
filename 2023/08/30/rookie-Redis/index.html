@@ -16,21 +16,21 @@
   <meta name="author" content="YaYee">
   <meta name="keywords" content="">
   
-    <meta name="description" content="这里写关于页的正文，支持 Markdown, HTML">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于">
-<meta property="og:url" content="https://arloyee.github.io/about/index.html">
+    <meta name="description" content="缓存更新策略Cache Aside Pattern（旁路缓存模式）Cache Aside Pattern是平时使用比较多的一个缓存读模式，比较适合读请求比较多的场景 Cache Aside Pattern中服务端需要同时维系数据库和缓存，并且是以数据库的结果为准 下面我们来看一下这个策略模式下的缓存读写步骤 读策略  如果读取的数据命中了缓存，则直接返回数据  如果读取的数据没有命中缓存，则从数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rookie-Redis">
+<meta property="og:url" content="https://arloyee.github.io/2023/08/30/rookie-Redis/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="这里写关于页的正文，支持 Markdown, HTML">
+<meta property="og:description" content="缓存更新策略Cache Aside Pattern（旁路缓存模式）Cache Aside Pattern是平时使用比较多的一个缓存读模式，比较适合读请求比较多的场景 Cache Aside Pattern中服务端需要同时维系数据库和缓存，并且是以数据库的结果为准 下面我们来看一下这个策略模式下的缓存读写步骤 读策略  如果读取的数据命中了缓存，则直接返回数据  如果读取的数据没有命中缓存，则从数据">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-07-27T05:06:20.970Z">
-<meta property="article:modified_time" content="2023-07-27T05:06:20.970Z">
+<meta property="article:published_time" content="2023-08-30T11:05:16.504Z">
+<meta property="article:modified_time" content="2023-08-30T11:40:37.846Z">
 <meta property="article:author" content="YaYee">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>关于 - Hexo</title>
+  <title>rookie-Redis - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -90,7 +90,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -196,9 +196,49 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="关于"></span>
+            <span id="subtitle" data-typed-text="rookie-Redis"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-30 19:05" pubdate>
+          2023年8月30日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          332 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          3 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
 
         
       </div>
@@ -214,74 +254,162 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-            <div class="about-avatar">
-              <img src="/img/avatar.png" srcset="/img/loading.gif" lazyload class="img-fluid" alt="avatar">
-            </div>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-<div class="text-center">
-  <div class="about-info">
-    <div class="about-name">Fluid</div>
-    <div class="about-intro">An elegant theme for Hexo</div>
-    <div class="about-icons">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
       
-        
-        
-        
-        <a href=https://github.com/arloyee class="
-           hint--bottom hint--rounded"
-           aria-label=GitHub
-           target="_blank"
-        >
-          <i class="iconfont icon-github-fill" aria-hidden="true"></i>
-          
-        </a>
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">rookie-Redis</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><h2 id="更新策略"><a href="#更新策略" class="headerlink" title="更新策略"></a>更新策略</h2><h3 id="Cache-Aside-Pattern（旁路缓存模式）"><a href="#Cache-Aside-Pattern（旁路缓存模式）" class="headerlink" title="Cache Aside Pattern（旁路缓存模式）"></a>Cache Aside Pattern（旁路缓存模式）</h3><p>Cache Aside Pattern是平时使用比较多的一个缓存读模式，比较适合读请求比较多的场景</p>
+<p>Cache Aside Pattern中服务端需要同时维系数据库和缓存，并且是以数据库的结果为准</p>
+<p>下面我们来看一下这个策略模式下的缓存读写步骤</p>
+<p><strong>读策略</strong></p>
+<ol>
+<li><p>如果读取的数据命中了缓存，则直接返回数据</p>
+</li>
+<li><p>如果读取的数据没有命中缓存，则从数据库中读取数据</p>
+</li>
+<li><p>然后将数据写入到缓存，并且返回给用户</p>
+</li>
+</ol>
+<p><strong>写策略</strong></p>
+<ol>
+<li><p>先更新数据库</p>
+</li>
+<li><p>删除缓存</p>
+</li>
+</ol>
+<p>「先更新数据库，再删除缓存」的方案保证了数据库与缓存的数据一致性，但是每次更新数据的时候，缓存的数据都会被删除，这样会对缓存的命中率带来影响</p>
+<h2 id="缓存异常"><a href="#缓存异常" class="headerlink" title="缓存异常"></a>缓存异常</h2><h3 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h3><ul>
+<li><p>缓存空值</p>
+</li>
+<li><p>布隆过滤器</p>
+</li>
+</ul>
+<h3 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h3><ul>
+<li><p>互斥锁</p>
+</li>
+<li><p>逻辑过期</p>
+</li>
+</ul>
+<h3 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h3><ul>
+<li>随机过期时间</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>rookie-Redis</div>
+      <div>https://arloyee.github.io/2023/08/30/rookie-Redis/</div>
+    </div>
+    <div class="license-meta">
       
-        
-        
-        
-        <a href=https://store.steampowered.com class="
-           hint--bottom hint--rounded"
-           aria-label=Steam
-           target="_blank"
-        >
-          <i class="iconfont icon-steam" aria-hidden="true"></i>
-          
-        </a>
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>YaYee</div>
+        </div>
       
-        
-        
-        
-        <a href=https://www.bilibili.com class="
-           hint--bottom hint--rounded"
-           aria-label=B站
-           target="_blank"
-        >
-          <i class="iconfont icon-bilibili-fill" aria-hidden="true"></i>
-          
-        </a>
       
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月30日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/25/rookie-Git/" title="rookie-Git">
+                        <span class="hidden-mobile">rookie-Git</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
     </div>
   </div>
 </div>
 
-<article class="about-content page-content mt-5">
-  <div class="markdown-body">
-    <p>这里写关于页的正文，支持 Markdown, HTML</p>
-
-  </div>
-
-  
-</article>
-
 
 
 
@@ -308,11 +436,8 @@
 
 
 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+
     
 
     
@@ -405,6 +530,46 @@
   
 
 
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
 
 
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>

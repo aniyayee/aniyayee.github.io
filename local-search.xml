@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>rookie-Redis</title>
+    <link href="/2023/08/30/rookie-Redis/"/>
+    <url>/2023/08/30/rookie-Redis/</url>
+    
+    <content type="html"><![CDATA[<h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><h2 id="更新策略"><a href="#更新策略" class="headerlink" title="更新策略"></a>更新策略</h2><h3 id="Cache-Aside-Pattern（旁路缓存模式）"><a href="#Cache-Aside-Pattern（旁路缓存模式）" class="headerlink" title="Cache Aside Pattern（旁路缓存模式）"></a>Cache Aside Pattern（旁路缓存模式）</h3><p>Cache Aside Pattern是平时使用比较多的一个缓存读模式，比较适合读请求比较多的场景</p><p>Cache Aside Pattern中服务端需要同时维系数据库和缓存，并且是以数据库的结果为准</p><p>下面我们来看一下这个策略模式下的缓存读写步骤</p><p><strong>读策略</strong></p><ol><li><p>如果读取的数据命中了缓存，则直接返回数据</p></li><li><p>如果读取的数据没有命中缓存，则从数据库中读取数据</p></li><li><p>然后将数据写入到缓存，并且返回给用户</p></li></ol><p><strong>写策略</strong></p><ol><li><p>先更新数据库</p></li><li><p>删除缓存</p></li></ol><p>「先更新数据库，再删除缓存」的方案保证了数据库与缓存的数据一致性，但是每次更新数据的时候，缓存的数据都会被删除，这样会对缓存的命中率带来影响</p><h2 id="缓存异常"><a href="#缓存异常" class="headerlink" title="缓存异常"></a>缓存异常</h2><h3 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h3><ul><li><p>缓存空值</p></li><li><p>布隆过滤器</p></li></ul><h3 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h3><ul><li><p>互斥锁</p></li><li><p>逻辑过期</p></li></ul><h3 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h3><ul><li>随机过期时间</li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>rookie-Git</title>
     <link href="/2023/08/25/rookie-Git/"/>
     <url>/2023/08/25/rookie-Git/</url>
