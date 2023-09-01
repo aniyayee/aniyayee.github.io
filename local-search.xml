@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>rookie-Netty</title>
+    <link href="/2023/09/01/rookie-Netty/"/>
+    <url>/2023/09/01/rookie-Netty/</url>
+    
+    <content type="html"><![CDATA[<h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h1><h2 id="1-1-什么是Netty"><a href="#1-1-什么是Netty" class="headerlink" title="1.1. 什么是Netty"></a>1.1. 什么是Netty</h2><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs applescript">Netty <span class="hljs-keyword">is</span> an asynchronous event-driven network <span class="hljs-built_in">application</span> framework<br><span class="hljs-keyword">for</span> rapid development <span class="hljs-keyword">of</span> maintainable high performance protocol servers &amp; clients.Copy<br></code></pre></td></tr></table></figure><p>Netty 是一个异步的、基于事件驱动的网络应用框架，用于快速开发可维护、高性能的网络服务器和客户端</p><p><strong>注意</strong>：<font color='red'><code>netty的异步还是基于多路复用的，并没有实现真正意义上的异步IO</code></font></p><h2 id="1-2-Netty的优势"><a href="#1-2-Netty的优势" class="headerlink" title="1.2. Netty的优势"></a>1.2. Netty的优势</h2><p>如果使用传统NIO，其工作量大，bug 多</p><ul><li>需要自己构建协议</li><li>解决 TCP 传输问题，如粘包、半包</li><li>因为bug的存在，epoll 空轮询导致 CPU 100%</li></ul><p>Netty 对 API 进行增强，使之更易用，如</p><ul><li>FastThreadLocal &#x3D;&gt; ThreadLocal</li><li>ByteBuf &#x3D;&gt; ByteBuffer</li></ul><h2 id="1-3-Netty-的地位"><a href="#1-3-Netty-的地位" class="headerlink" title="1.3. Netty 的地位"></a>1.3. Netty 的地位</h2><p>Netty 在 Java 网络应用框架中的地位就好比：Spring 框架在 JavaEE 开发中的地位</p><p>以下的框架都使用了 Netty，因为它们有网络通信需求！</p><ul><li>Cassandra - nosql 数据库</li><li>Spark - 大数据分布式计算框架</li><li>Hadoop - 大数据分布式存储框架</li><li>RocketMQ - ali 开源的消息队列</li><li>ElasticSearch - 搜索引擎</li><li>gRPC - rpc 框架</li><li>Dubbo - rpc 框架</li><li>Spring 5.x - flux api 完全抛弃了 tomcat ，使用 netty 作为服务器端</li><li>Zookeeper - 分布式协调框架</li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>rookie-Redis</title>
     <link href="/2023/08/30/rookie-Redis/"/>
     <url>/2023/08/30/rookie-Redis/</url>
