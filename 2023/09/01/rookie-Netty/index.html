@@ -23,10 +23,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1. 概述1.1. 什么是Netty12Netty is an asynchronous event-driven network application frameworkfor rapid development of maintainable high performance protocol servers &amp; clients.Copy   Netty 是一个异步的、基于事件驱动的">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://arloyee.github.io/img/0049.png">
+<meta property="og:image" content="https://arloyee.github.io/img/0051.png">
 <meta property="article:published_time" content="2023-09-01T11:38:33.572Z">
-<meta property="article:modified_time" content="2023-09-01T11:57:18.051Z">
+<meta property="article:modified_time" content="2023-09-06T12:28:11.227Z">
 <meta property="article:author" content="YaYee">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://arloyee.github.io/img/0049.png">
   
   
   
@@ -219,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          661 字
+          4.4k 字
         
       </span>
     
@@ -230,7 +233,7 @@
         
         
         
-          6 分钟
+          37 分钟
         
       </span>
     
@@ -279,28 +282,185 @@
 <p><strong>注意</strong>：<font color='red'><code>netty的异步还是基于多路复用的，并没有实现真正意义上的异步IO</code></font></p>
 <h2 id="1-2-Netty的优势"><a href="#1-2-Netty的优势" class="headerlink" title="1.2. Netty的优势"></a>1.2. Netty的优势</h2><p>如果使用传统NIO，其工作量大，bug 多</p>
 <ul>
-<li>需要自己构建协议</li>
-<li>解决 TCP 传输问题，如粘包、半包</li>
-<li>因为bug的存在，epoll 空轮询导致 CPU 100%</li>
+<li><p>需要自己构建协议</p>
+</li>
+<li><p>解决 TCP 传输问题，如粘包、半包</p>
+</li>
+<li><p>因为bug的存在，epoll 空轮询导致 CPU 100%</p>
+</li>
 </ul>
 <p>Netty 对 API 进行增强，使之更易用，如</p>
 <ul>
-<li>FastThreadLocal &#x3D;&gt; ThreadLocal</li>
-<li>ByteBuf &#x3D;&gt; ByteBuffer</li>
+<li><p>FastThreadLocal -&gt; ThreadLocal</p>
+</li>
+<li><p>ByteBuf -&gt; ByteBuffer</p>
+</li>
 </ul>
 <h2 id="1-3-Netty-的地位"><a href="#1-3-Netty-的地位" class="headerlink" title="1.3. Netty 的地位"></a>1.3. Netty 的地位</h2><p>Netty 在 Java 网络应用框架中的地位就好比：Spring 框架在 JavaEE 开发中的地位</p>
 <p>以下的框架都使用了 Netty，因为它们有网络通信需求！</p>
 <ul>
-<li>Cassandra - nosql 数据库</li>
-<li>Spark - 大数据分布式计算框架</li>
-<li>Hadoop - 大数据分布式存储框架</li>
-<li>RocketMQ - ali 开源的消息队列</li>
-<li>ElasticSearch - 搜索引擎</li>
-<li>gRPC - rpc 框架</li>
-<li>Dubbo - rpc 框架</li>
-<li>Spring 5.x - flux api 完全抛弃了 tomcat ，使用 netty 作为服务器端</li>
-<li>Zookeeper - 分布式协调框架</li>
+<li><p>Cassandra - nosql 数据库</p>
+</li>
+<li><p>Spark - 大数据分布式计算框架</p>
+</li>
+<li><p>Hadoop - 大数据分布式存储框架</p>
+</li>
+<li><p>RocketMQ - ali 开源的消息队列</p>
+</li>
+<li><p>ElasticSearch - 搜索引擎</p>
+</li>
+<li><p>gRPC - rpc 框架</p>
+</li>
+<li><p>Dubbo - rpc 框架</p>
+</li>
+<li><p>Spring 5.x - flux api 完全抛弃了 tomcat ，使用 netty 作为服务器端</p>
+</li>
+<li><p>Zookeeper - 分布式协调框架</p>
+</li>
 </ul>
+<h1 id="2-入门案例"><a href="#2-入门案例" class="headerlink" title="2. 入门案例"></a>2. 入门案例</h1><h2 id="2-1-服务器端代码"><a href="#2-1-服务器端代码" class="headerlink" title="2.1. 服务器端代码"></a>2.1. 服务器端代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloServer</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">// 1. 启动器 负责装配netty组件 启动服务器</span><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServerBootstrap</span>()<br>            <span class="hljs-comment">// 2. 创建 NioEventLoopGroup 可以简单理解为 线程池 + Selector</span><br>            .group(<span class="hljs-keyword">new</span> <span class="hljs-title class_">NioEventLoopGroup</span>())<br>            <span class="hljs-comment">// 3. 选择 服务器的 ServerSocketChannel 实现</span><br>            .channel(NioServerSocketChannel.class)<br>            <span class="hljs-comment">// 4. child 负责处理读写 该方法决定了 child 执行哪些操作</span><br>            <span class="hljs-comment">// ChannelInitializer 处理器（仅执行一次）</span><br>            <span class="hljs-comment">// 它的作用是待客户端 SocketChannel 建立连接后 执行 initChannel 以便添加更多的处理器</span><br>            .childHandler(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ChannelInitializer</span>&lt;NioSocketChannel&gt;() &#123;<br>                <span class="hljs-meta">@Override</span><br>                <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">initChannel</span><span class="hljs-params">(NioSocketChannel ch)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>                    <span class="hljs-comment">// 5. SocketChannel 的处理器 使用 StringDecoder 解码 ByteBuf -&gt; String</span><br>                    ch.pipeline().addLast(<span class="hljs-keyword">new</span> <span class="hljs-title class_">StringDecoder</span>());<br>                    <span class="hljs-comment">// 6. SocketChannel 的业务处理 使用上一个处理器的处理结果</span><br>                    ch.pipeline().addLast(<span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleChannelInboundHandler</span>&lt;String&gt;() &#123;<br>                        <span class="hljs-meta">@Override</span><br>                        <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">channelRead0</span><span class="hljs-params">(ChannelHandlerContext ctx, String msg)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>                            System.out.println(msg);<br>                        &#125;<br>                    &#125;);<br>                &#125;<br>                <span class="hljs-comment">// 7. ServerSocketChannel 绑定 8080 端口</span><br>            &#125;).bind(<span class="hljs-number">8080</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-2-客户端代码"><a href="#2-2-客户端代码" class="headerlink" title="2.2. 客户端代码"></a>2.2. 客户端代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloClient</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> InterruptedException &#123;<br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">Bootstrap</span>()<br>            .group(<span class="hljs-keyword">new</span> <span class="hljs-title class_">NioEventLoopGroup</span>())<br>            <span class="hljs-comment">// 1. 选择 客户端 Socket 实现类 NioSocketChannel 表示 基于 NIO 的客户端实现</span><br>            .channel(NioSocketChannel.class)<br>            <span class="hljs-comment">// 2. ChannelInitializer 处理器（仅执行一次）</span><br>            <span class="hljs-comment">// 它的作用是在客户端 SocketChannel 建立连接之后 执行 initChannel 添加更多的处理器</span><br>            .handler(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ChannelInitializer</span>&lt;Channel&gt;() &#123;<br>                <span class="hljs-meta">@Override</span><br>                <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">initChannel</span><span class="hljs-params">(Channel ch)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>                    <span class="hljs-comment">// 3. 消息会经过管道中的 handler 处理 这里是将 String -&gt; ByteBuf 编码发出</span><br>                    ch.pipeline().addLast(<span class="hljs-keyword">new</span> <span class="hljs-title class_">StringEncoder</span>());<br>                &#125;<br>                <span class="hljs-comment">// 4. 指定要连接的服务器和端口</span><br>            &#125;).connect(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InetSocketAddress</span>(<span class="hljs-string">&quot;127.0.0.1&quot;</span>, <span class="hljs-number">8080</span>))<br>            <span class="hljs-comment">// 5. Netty 中很多方法都是异步的 如 connect</span><br>            <span class="hljs-comment">// 这时需要使用 sync 方法等待 connect 建立连接完毕</span><br>            .sync()<br>            <span class="hljs-comment">// 6. 获取 channel 对象 它即为通道抽象 可以进行数据读写操作</span><br>            .channel()<br>            <span class="hljs-comment">// 7. 写入消息并清空缓冲区</span><br>            .writeAndFlush(<span class="hljs-string">&quot;hey!&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-3-组件解释"><a href="#2-3-组件解释" class="headerlink" title="2.3. 组件解释"></a>2.3. 组件解释</h2><ul>
+<li><p>channel 可以理解为数据的通道</p>
+</li>
+<li><p>msg 理解为流动的数据，最开始输入是 ByteBuf，经过 pipeline 中的各个 handler 加工，会变成其它类型对象，最后输出又变成 ByteBuf</p>
+</li>
+<li><p>handler 可以理解为数据的处理工序</p>
+<ul>
+<li><p>工序有多道，合在一起就是 pipeline（传递途径），pipeline 负责发布事件（读、读取完成…）传播给每个 handler，handler 对自己感兴趣的事件进行处理（重写了相应事件处理方法）</p>
+<ul>
+<li>pipeline 中有多个 handler，处理时会依次调用其中的 handler</li>
+</ul>
+</li>
+<li><p>handler 分 Inbound 和 Outbound 两类</p>
+<ul>
+<li><p>Inbound 入站</p>
+</li>
+<li><p>Outbound 出站</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>eventLoop 可以理解为处理数据的工人</p>
+<ul>
+<li><p>eventLoop 可以管理多个 channel 的 io 操作，并一旦 eventLoop 负责了某个 channel，就会将其与channel进行绑定，以后该 channel 中的 io 操作都由该 eventLoop 负责</p>
+</li>
+<li><p>eventLoop 既可以执行 io 操作，也可以进行任务处理，每个 eventLoop 有自己的任务队列，队列里可以堆放多个 channel 的待处理任务，任务分为普通任务、定时任务</p>
+</li>
+<li><p>eventLoop 按照 pipeline 顺序，依次按照 handler 的规划（代码）处理数据，可以为每个 handler 指定不同的 eventLoop</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="3-粘包与半包"><a href="#3-粘包与半包" class="headerlink" title="3. 粘包与半包"></a>3. 粘包与半包</h1><h2 id="3-1-现象分析"><a href="#3-1-现象分析" class="headerlink" title="3.1. 现象分析"></a>3.1. 现象分析</h2><h3 id="3-1-1-粘包"><a href="#3-1-1-粘包" class="headerlink" title="3.1.1. 粘包"></a>3.1.1. 粘包</h3><ul>
+<li><p>现象，发送 abc def，接收 abcdef</p>
+</li>
+<li><p>原因</p>
+<ul>
+<li><p>应用层：接收方 ByteBuf 设置太大（Netty 默认 1024）</p>
+</li>
+<li><p>滑动窗口：假设发送方 256 bytes 表示一个完整报文，但由于接收方处理不及时且窗口大小足够大，这 256 bytes 字节就会缓冲在接收方的滑动窗口中，当滑动窗口中缓冲了多个报文就会粘包</p>
+</li>
+<li><p>Nagle 算法：会造成粘包</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-1-2-半包"><a href="#3-1-2-半包" class="headerlink" title="3.1.2. 半包"></a>3.1.2. 半包</h3><ul>
+<li><p>现象，发送 abcdef，接收 abc def</p>
+</li>
+<li><p>原因</p>
+<ul>
+<li><p>应用层：接收方 ByteBuf 小于实际发送数据量</p>
+</li>
+<li><p>滑动窗口：假设接收方的窗口只剩了 128 bytes，发送方的报文大小是 256 bytes，这时放不下了，只能先发送前 128 bytes，等待 ack 后才能发送剩余部分，这就造成了半包</p>
+</li>
+<li><p>MSS 限制：当发送的数据超过 MSS 限制后，会将数据切分发送，就会造成半包</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p> 本质是因为 TCP 是流式协议，消息无边界</p>
+</blockquote>
+<h2 id="3-2-原理分析"><a href="#3-2-原理分析" class="headerlink" title="3.2. 原理分析"></a>3.2. 原理分析</h2><h3 id="3-2-1-滑动窗口"><a href="#3-2-1-滑动窗口" class="headerlink" title="3.2.1. 滑动窗口"></a>3.2.1. 滑动窗口</h3><ul>
+<li><p>TCP 以一个段（segment）为单位，每发送一个段就需要进行一次确认应答（ack）处理，但如果这么做，缺点是包的往返时间越长性能就越差</p>
+<p><img src="/../img/0049.png" srcset="/img/loading.gif" lazyload alt="0049"></p>
+</li>
+</ul>
+<ul>
+<li>为了解决此问题，引入了窗口概念，窗口大小即决定了无需等待应答而可以继续发送的数据最大值</li>
+</ul>
+<p><img src="/../img/0051.png" srcset="/img/loading.gif" lazyload alt="0051"></p>
+<ul>
+<li><p>窗口实际就起到一个缓冲区的作用，同时也能起到流量控制的作用</p>
+<ul>
+<li><p>图中深色的部分即要发送的数据，高亮的部分即窗口</p>
+</li>
+<li><p>窗口内的数据才允许被发送，当应答未到达前，窗口必须停止滑动</p>
+</li>
+<li><p>如果 1001~2000 这个段的数据 ack 回来了，窗口就可以向前滑动</p>
+</li>
+<li><p>接收方也会维护一个窗口，只有落在窗口内的数据才能允许接收</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-2-2-MSS-限制"><a href="#3-2-2-MSS-限制" class="headerlink" title="3.2.2. MSS 限制"></a>3.2.2. MSS 限制</h3><ul>
+<li><p>链路层对一次能够发送的最大数据有限制，这个限制称之为 MTU（maximum transmission unit），不同的链路设备的 MTU 值也有所不同，例如</p>
+</li>
+<li><p>以太网的 MTU 是 1500</p>
+</li>
+<li><p>FDDI（光纤分布式数据接口）的 MTU 是 4352</p>
+</li>
+<li><p>本地回环地址的 MTU 是 65535 - 本地测试不走网卡</p>
+</li>
+<li><p>MSS 是最大段长度（maximum segment size），它是 MTU 刨去 TCP 头和 IP 头后剩余能够作为数据传输的字节数</p>
+</li>
+<li><p>ipv4 TCP 头占用 20 bytes，IP 头占用 20 bytes，因此以太网 MSS 的值为 1500 - 40 &#x3D; 1460</p>
+</li>
+<li><p>TCP 在传递大量数据时，会按照 MSS 大小将数据进行分割发送</p>
+</li>
+<li><p>MSS 的值在三次握手时通知对方自己 MSS 的值，然后在两者之间选择一个小值作为 MSS</p>
+</li>
+</ul>
+<h3 id="3-2-3-Nagle-算法"><a href="#3-2-3-Nagle-算法" class="headerlink" title="3.2.3. Nagle 算法"></a>3.2.3. Nagle 算法</h3><ul>
+<li><p>即使发送一个字节，也需要加入 TCP 头和 IP 头，也就是总字节数会使用 41 bytes，非常不经济。因此为了提高网络利用率，TCP 希望尽可能发送足够大的数据，这就是 Nagle 算法产生的缘由</p>
+</li>
+<li><p>该算法是指发送端即使还有应该发送的数据，但如果这部分数据很少的话，则进行延迟发送</p>
+<ul>
+<li><p>如果 SO_SNDBUF 的数据达到 MSS，则需要发送</p>
+</li>
+<li><p>如果 SO_SNDBUF 中含有 FIN（表示需要连接关闭）这时将剩余数据发送，再关闭</p>
+</li>
+<li><p>如果 TCP_NODELAY &#x3D; true，则需要发送</p>
+</li>
+<li><p>已发送的数据都收到 ack 时，则需要发送</p>
+</li>
+<li><p>上述条件不满足，但发生超时（一般为 200ms）则需要发送</p>
+</li>
+<li><p>除上述情况，延迟发送</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-3-解决方案"><a href="#3-3-解决方案" class="headerlink" title="3.3. 解决方案"></a>3.3. 解决方案</h2><ol>
+<li><p>短链接，发一个包建立一次连接，这样连接建立到连接断开之间就是消息的边界，缺点效率太低</p>
+</li>
+<li><p>每一条消息采用固定长度，缺点浪费空间</p>
+</li>
+<li><p>每一条消息采用分隔符，例如 \n，缺点需要转义</p>
+</li>
+<li><p>每一条消息分为 head 和 body，head 中包含 body 的长度</p>
+</li>
+</ol>
 
                 
               </div>
