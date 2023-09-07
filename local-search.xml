@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>rookie-Linux</title>
+    <link href="/2023/09/07/rookie-Linux/"/>
+    <url>/2023/09/07/rookie-Linux/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Basis"><a href="#Basis" class="headerlink" title="Basis"></a>Basis</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查询 java 进程</span><br>$ jps<br><br>$ ps -ef| grep java<br><br><span class="hljs-comment"># 销毁进程</span><br>$ <span class="hljs-built_in">kill</span> -9 [PID]<br><br><span class="hljs-comment"># 运行 jar</span><br>$ <span class="hljs-built_in">nohup</span> java -jar xxx.jar &amp;<br><br><span class="hljs-comment"># 查看日志</span><br>$ <span class="hljs-built_in">tail</span> -1000f nohup.out<br><br><span class="hljs-comment"># 删除文件</span><br>$ <span class="hljs-built_in">rm</span> -rf [filename]<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>rookie-Idea</title>
     <link href="/2023/09/04/rookie-Idea/"/>
     <url>/2023/09/04/rookie-Idea/</url>
@@ -73,7 +86,7 @@
     <link href="/2023/08/24/BUG-FIX/"/>
     <url>/2023/08/24/BUG-FIX/</url>
     
-    <content type="html"><![CDATA[<h3 id="端口冲突"><a href="#端口冲突" class="headerlink" title="端口冲突"></a>端口冲突</h3><blockquote><p>Identify and stop the process that’s listening on port 8080 or configure this application to listen on another port.</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看端口状态</span><br>$ netstat 8080<br><br><span class="hljs-comment"># 查看占用端口的进程号</span><br>$ netstat -ano | findstr 8080<br><br><span class="hljs-comment"># 终止进程</span><br>$ taskkill /F /PID 8456<br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h3 id="端口冲突"><a href="#端口冲突" class="headerlink" title="端口冲突"></a>端口冲突</h3><blockquote><p>Identify and stop the process that’s listening on port 8080 or configure this application to listen on another port.</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># win 查看 java 进程</span><br>$ jps<br><br><span class="hljs-comment"># 查看端口状态</span><br>$ netstat 8080<br><br><span class="hljs-comment"># 查看占用端口的进程号</span><br>$ netstat -ano | findstr 8080<br><br><span class="hljs-comment"># 终止进程</span><br>$ taskkill /F /PID 8456<br></code></pre></td></tr></table></figure>]]></content>
     
     
     
