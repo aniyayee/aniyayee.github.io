@@ -16,21 +16,31 @@
   <meta name="author" content="YaYee">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Basis12345678910111213141516# 查询 java 进程$ jps$ ps -ef| grep java# 销毁进程$ kill -9 [PID]# 运行 jar$ nohup java -jar xxx.jar &amp;# 查看日志$ tail -1000f nohup.out# 删除文件$ rm -rf [filename]      Advance123456789">
+    <meta name="description" content="一、使用devtools实现远程热部署1 实现过程1.1 配置 pom 依赖     yml 配置    Configurations   1.2 具体操作 修改方法体    Recompile   2 实现现象2.1 本地IDEA 2.2 远程服务器 本地 Recompile 前，调用 GET &#x2F;captcha&#x2F;{phone}    本地 Recompile 后，远程服务器经">
 <meta property="og:type" content="article">
-<meta property="og:title" content="rookie-Linux">
-<meta property="og:url" content="https://arloyee.github.io/2023/09/07/rookie-Linux/index.html">
+<meta property="og:title" content="Miscellaneous">
+<meta property="og:url" content="https://arloyee.github.io/2023/09/11/Miscellaneous/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Basis12345678910111213141516# 查询 java 进程$ jps$ ps -ef| grep java# 销毁进程$ kill -9 [PID]# 运行 jar$ nohup java -jar xxx.jar &amp;# 查看日志$ tail -1000f nohup.out# 删除文件$ rm -rf [filename]      Advance123456789">
+<meta property="og:description" content="一、使用devtools实现远程热部署1 实现过程1.1 配置 pom 依赖     yml 配置    Configurations   1.2 具体操作 修改方法体    Recompile   2 实现现象2.1 本地IDEA 2.2 远程服务器 本地 Recompile 前，调用 GET &#x2F;captcha&#x2F;{phone}    本地 Recompile 后，远程服务器经">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-07T07:06:05.277Z">
-<meta property="article:modified_time" content="2023-09-09T00:52:00.853Z">
+<meta property="og:image" content="https://arloyee.github.io/img/image-20230909123938399.png">
+<meta property="og:image" content="https://arloyee.github.io/img/image-20230909123919643.png">
+<meta property="og:image" content="https://arloyee.github.io/img/image-20230909123710887.png">
+<meta property="og:image" content="https://arloyee.github.io/img/image-20230909124210393.png">
+<meta property="og:image" content="https://arloyee.github.io/img/image-20230909124404772.png">
+<meta property="og:image" content="https://arloyee.github.io/img/image-20230909124609910.png">
+<meta property="og:image" content="https://arloyee.github.io/img/1694417656730.jpg">
+<meta property="og:image" content="https://arloyee.github.io/img/image-20230909123113261.png">
+<meta property="og:image" content="https://arloyee.github.io/img/image-20230909125022034.png">
+<meta property="article:published_time" content="2023-09-11T07:21:29.939Z">
+<meta property="article:modified_time" content="2023-09-11T07:42:42.497Z">
 <meta property="article:author" content="YaYee">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://arloyee.github.io/img/image-20230909123938399.png">
   
   
   
-  <title>rookie-Linux - Hexo</title>
+  <title>Miscellaneous - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +206,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="rookie-Linux"></span>
+            <span id="subtitle" data-typed-text="Miscellaneous"></span>
           
         </div>
 
@@ -207,8 +217,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-07 15:06" pubdate>
-          2023年9月7日 下午
+        <time datetime="2023-09-11 15:21" pubdate>
+          2023年9月11日 下午
         </time>
       </span>
     
@@ -219,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          513 字
+          196 字
         
       </span>
     
@@ -230,7 +240,7 @@
         
         
         
-          5 分钟
+          2 分钟
         
       </span>
     
@@ -267,19 +277,41 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">rookie-Linux</h1>
+            <h1 id="seo-header">Miscellaneous</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Basis"><a href="#Basis" class="headerlink" title="Basis"></a>Basis</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查询 java 进程</span><br>$ jps<br><br>$ ps -ef| grep java<br><br><span class="hljs-comment"># 销毁进程</span><br>$ <span class="hljs-built_in">kill</span> -9 [PID]<br><br><span class="hljs-comment"># 运行 jar</span><br>$ <span class="hljs-built_in">nohup</span> java -jar xxx.jar &amp;<br><br><span class="hljs-comment"># 查看日志</span><br>$ <span class="hljs-built_in">tail</span> -1000f nohup.out<br><br><span class="hljs-comment"># 删除文件</span><br>$ <span class="hljs-built_in">rm</span> -rf [filename]<br></code></pre></td></tr></table></figure>
-
-
-
-
-
-<h1 id="Advance"><a href="#Advance" class="headerlink" title="Advance"></a>Advance</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看 class md5</span><br>$ <span class="hljs-built_in">md5sum</span> xxx.class<br><br><span class="hljs-comment"># 非 FatJar 启动</span><br>$ java -<span class="hljs-built_in">cp</span> ./lib/*:./classes/ com.rookie.Application<br><br><span class="hljs-comment"># 监听端口</span><br>$ netstat -ant| grep 3306<br><span class="hljs-comment">#												外部地址		 </span><br>Proto Recv-Q Send-Q Local Address           Foreign Address         State <br><br><span class="hljs-comment"># 查看 hosts</span><br>$ <span class="hljs-built_in">cat</span> /etc/hosts<br><br><span class="hljs-comment"># 查看网络服务</span><br>$ telnet PATH [端口]<br><br><span class="hljs-comment"># 查找文件 当前目录及其子目录</span><br>$ find . -iname  <span class="hljs-string">&quot;hello.jar&quot;</span><br><br><span class="hljs-comment"># 查找正在运行的 Java 进程</span><br>$ ps -ef | grep java<br><br><span class="hljs-comment"># 复制到 /tmp 便于运维删除</span><br>$ <span class="hljs-built_in">cp</span> hello.jar /tmp<br></code></pre></td></tr></table></figure>
-
+                <h1 id="一、使用devtools实现远程热部署"><a href="#一、使用devtools实现远程热部署" class="headerlink" title="一、使用devtools实现远程热部署"></a>一、使用devtools实现远程热部署</h1><h2 id="1-实现过程"><a href="#1-实现过程" class="headerlink" title="1 实现过程"></a>1 实现过程</h2><h3 id="1-1-配置"><a href="#1-1-配置" class="headerlink" title="1.1 配置"></a>1.1 配置</h3><ul>
+<li>pom 依赖</li>
+</ul>
+<p><img src="/../img/image-20230909123938399.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/image-20230909123919643.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>yml 配置</li>
+</ul>
+<p><img src="/../img/image-20230909123710887.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>Configurations</li>
+</ul>
+<p><img src="/../img/image-20230909124210393.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-2-具体操作"><a href="#1-2-具体操作" class="headerlink" title="1.2 具体操作"></a>1.2 具体操作</h3><ul>
+<li>修改方法体</li>
+</ul>
+<p><img src="/../img/image-20230909124404772.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>Recompile</li>
+</ul>
+<p><img src="/../img/image-20230909124609910.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2-实现现象"><a href="#2-实现现象" class="headerlink" title="2 实现现象"></a>2 实现现象</h2><h3 id="2-1-本地IDEA"><a href="#2-1-本地IDEA" class="headerlink" title="2.1 本地IDEA"></a>2.1 本地IDEA</h3><p><img src="/../img/1694417656730.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-远程服务器"><a href="#2-2-远程服务器" class="headerlink" title="2.2 远程服务器"></a>2.2 远程服务器</h3><ul>
+<li>本地 Recompile 前，调用 GET &#x2F;captcha&#x2F;{phone}</li>
+</ul>
+<p><img src="/../img/image-20230909123113261.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>本地 Recompile 后，远程服务器经过两次重启，调用 GET &#x2F;captcha&#x2F;{phone}</li>
+</ul>
+<p><img src="/../img/image-20230909125022034.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -297,8 +329,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>rookie-Linux</div>
-      <div>https://arloyee.github.io/2023/09/07/rookie-Linux/</div>
+      <div>Miscellaneous</div>
+      <div>https://arloyee.github.io/2023/09/11/Miscellaneous/</div>
     </div>
     <div class="license-meta">
       
@@ -310,7 +342,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月7日</div>
+          <div>2023年9月11日</div>
         </div>
       
       
@@ -342,18 +374,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/11/Miscellaneous/" title="Miscellaneous">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Miscellaneous</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/04/rookie-Idea/" title="rookie-Idea">
-                        <span class="hidden-mobile">rookie-Idea</span>
+                      <a href="/2023/09/07/rookie-Linux/" title="rookie-Linux">
+                        <span class="hidden-mobile">rookie-Linux</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
