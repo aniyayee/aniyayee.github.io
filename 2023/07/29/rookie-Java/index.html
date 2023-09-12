@@ -24,7 +24,7 @@
 <meta property="og:description" content="基础BigDecimaldivide在 Java 中，BigDecimal 类提供了 divide 方法用于执行除法运算。divide 方法有多个重载版本，可以用于执行不同类型的除法操作。 方法签名： 1public BigDecimal divide(BigDecimal divisor)  参数说明：  divisor：除数，表示要将当前 BigDecimal 对象除以的值。  方法返回值：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-29T01:28:00.348Z">
-<meta property="article:modified_time" content="2023-09-12T07:24:04.935Z">
+<meta property="article:modified_time" content="2023-09-12T09:13:18.744Z">
 <meta property="article:author" content="YaYee">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5k 字
+          5.8k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          42 分钟
+          48 分钟
         
       </span>
     
@@ -332,6 +332,24 @@
 
 <p>在上述示例中，我们首先创建了一个 <code>HashMap</code>，其中包含了产品名称和库存量的映射。接着，我们希望将新的库存量（20）合并到 Map 中的 “apple” 产品中。使用 <code>merge</code> 方法，我们找到 “apple” 对应的库存量（10），然后将新的库存量（20）与当前库存量相加得到 30，并将其更新到 Map 中。最终的结果是 <code>inventory</code> 中包含键值对 “apple&#x3D;30”。</p>
 <p>这就是 <code>Map</code> 接口中 <code>merge</code> 方法的使用方法。它是一个很实用的方法，可以方便地处理 Map 中的键值对合并和更新操作。</p>
+<h3 id="getOrDefault"><a href="#getOrDefault" class="headerlink" title="getOrDefault"></a>getOrDefault</h3><p><code>getOrDefault</code> 用于获取 Map 中指定键的值，如果键不存在于 Map 中，则返回一个默认值。</p>
+<p>方法签名如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">V <span class="hljs-title function_">getOrDefault</span><span class="hljs-params">(Object key, V defaultValue)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>参数说明：</p>
+<ul>
+<li><code>key</code>：要获取值的键。</li>
+<li><code>defaultValue</code>：如果键不存在时要返回的默认值。</li>
+</ul>
+<p>方法返回值：</p>
+<ul>
+<li>如果 <code>key</code> 存在于 <code>Map</code> 中，则返回与键关联的值。</li>
+<li>如果 <code>key</code> 不存在于 <code>Map</code> 中，则返回默认值<code>defaultValue</code>。</li>
+</ul>
+<p>使用示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> &#123;<br>    Map&lt;String, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br><br>    <span class="hljs-comment">// 向 Map 中添加键值对</span><br>    map.put(<span class="hljs-string">&quot;key1&quot;</span>, <span class="hljs-number">24</span>);<br>    map.put(<span class="hljs-string">&quot;key2&quot;</span>, <span class="hljs-number">100</span>);<br><br>    <span class="hljs-comment">// 获取指定键的值，如果键不存在则返回默认值</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">value1</span> <span class="hljs-operator">=</span> map.getOrDefault(<span class="hljs-string">&quot;key1&quot;</span>, <span class="hljs-number">0</span>);<br>    <span class="hljs-type">int</span> <span class="hljs-variable">value3</span> <span class="hljs-operator">=</span> map.getOrDefault(<span class="hljs-string">&quot;key3&quot;</span>, <span class="hljs-number">0</span>);<br><br>    System.out.println(<span class="hljs-string">&quot;Value1: &quot;</span> + value1); <span class="hljs-comment">// 输出 24</span><br>    System.out.println(<span class="hljs-string">&quot;Value3: &quot;</span> + value3); <span class="hljs-comment">// 输出 0，因为 &quot;key3&quot; 不存在于 Map 中</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在这个示例中，首先向 Map 中添加了两个键值对 (“key1”, 42) 和 (“key2”, 100)。然后使用 <code>getOrDefault</code> 方法来获取键 “key1” 的值，它存在于 Map 中，所以返回值为 42。接着尝试获取键 “key3” 的值，但由于 “key3” 不存在于 Map 中，所以返回默认值 0。</p>
 <h3 id="computeIfAbsent"><a href="#computeIfAbsent" class="headerlink" title="computeIfAbsent"></a>computeIfAbsent</h3><p><code>computeIfAbsent</code> 用于根据指定的键获取对应的值，如果键不存在，则通过一个函数计算生成新值并将其放入到 <code>Map</code> 中。</p>
 <p>方法签名如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">V <span class="hljs-title function_">computeIfAbsent</span><span class="hljs-params">(K key, Function&lt;? <span class="hljs-built_in">super</span> K, ? extends V&gt; mappingFunction)</span><br></code></pre></td></tr></table></figure>
@@ -369,7 +387,7 @@
 <p>使用示例：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> &#123;<br>    Map&lt;String, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br><br>    <span class="hljs-comment">// 添加键值对，如果键不存在</span><br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">oldValue</span> <span class="hljs-operator">=</span> map.putIfAbsent(<span class="hljs-string">&quot;key&quot;</span>, <span class="hljs-number">24</span>);<br>    System.out.println(<span class="hljs-string">&quot;Old Value: &quot;</span> + oldValue); <span class="hljs-comment">// 输出 null，表示添加成功</span><br><br>    <span class="hljs-comment">// 再次尝试添加相同的键值对</span><br>    <span class="hljs-type">Integer</span> <span class="hljs-variable">existingValue</span> <span class="hljs-operator">=</span> map.putIfAbsent(<span class="hljs-string">&quot;key&quot;</span>, <span class="hljs-number">100</span>);<br>    System.out.println(<span class="hljs-string">&quot;Existing Value: &quot;</span> + existingValue); <span class="hljs-comment">// 输出 24，表示键已存在，不执行添加操作</span><br><br>    <span class="hljs-comment">// 查看最终结果</span><br>    System.out.println(<span class="hljs-string">&quot;Map: &quot;</span> + map); <span class="hljs-comment">// 输出：Map: &#123;key=24&#125;</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>在上述示例中，首先尝试向 Map 中添加键值对 <code>&quot;key&quot;</code> 和 <code>24</code>因为键 <code>&quot;key&quot;</code> 不存在，所以添加成功，返回值为 <code>null</code>。然后再次尝试添加相同的键值对，但由于键 <code>&quot;key&quot;</code> 已经存在，不执行添加操作，返回已存在的值 <code>24</code>。最终，Map 中只包含一个键值对 <code>&#123;key=24&#125;</code>。</p>
+<p>在上述示例中，首先尝试向 Map 中添加键值对 “key” 和 24，因为键 “key” 不存在，所以添加成功，返回值为 null。然后再次尝试添加相同的键值对，但由于键 “key” 已经存在，不执行添加操作，返回已存在的值 24。最终，Map 中只包含一个键值对 {key&#x3D;24}。</p>
 <p>这个方法的主要目的是在多线程环境中避免竞态条件（race condition），确保只有一个线程成功地将键值对添加到 Map 中。</p>
 <h2 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h2><h3 id="singletonList"><a href="#singletonList" class="headerlink" title="singletonList"></a>singletonList</h3><p><code>Collections</code> 类中的 <code>singletonList</code> 方法用于创建一个包含单个元素的不可变（immutable）列表（List）。这个列表只包含一个元素，长度固定为 1，因此无法对其进行添加或删除元素的操作。</p>
 <p>使用示例：</p>
