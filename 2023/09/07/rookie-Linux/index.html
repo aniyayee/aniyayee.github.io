@@ -24,7 +24,7 @@
 <meta property="og:description" content="Basis12345678910111213141516# 查询 java 进程$ jps$ ps -ef| grep java# 销毁进程$ kill -9 [PID]# 运行 jar$ nohup java -jar xxx.jar &amp;# 查看日志$ tail -1000f nohup.out# 删除文件$ rm -rf [filename]      Advance123456789">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-07T07:06:05.277Z">
-<meta property="article:modified_time" content="2023-09-15T11:11:36.541Z">
+<meta property="article:modified_time" content="2023-09-15T12:21:32.075Z">
 <meta property="article:author" content="YaYee">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          2k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          11 分钟
+          17 分钟
         
       </span>
     
@@ -285,7 +285,7 @@
 <h2 id="Curl"><a href="#Curl" class="headerlink" title="Curl"></a>Curl</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/09/curl-reference.html">curl 的用法指南</a></p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># GET请求</span><br>$ curl -v https://www.example.com<br><br><span class="hljs-comment"># POST请求 json传参</span><br>$ curl -v -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> -d <span class="hljs-string">&#x27;&#123;&quot;captcha&quot;: &quot;abcd&quot;, &quot;phone&quot;: &quot;13687654321&quot;&#125;&#x27;</span> http://www.example.com/login<br><br>$ curl -v -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> -d @login.json http://www.example.com/login<br><br>$ <span class="hljs-built_in">cat</span> login.json<br>&#123;<br>  <span class="hljs-string">&quot;captcha&quot;</span>: <span class="hljs-string">&quot;abcd&quot;</span>,<br>  <span class="hljs-string">&quot;phone&quot;</span>: <span class="hljs-string">&quot;13687654321&quot;</span><br>&#125;<br><br><span class="hljs-comment"># POST请求 &quot;-X POST&quot; 可以省略 Content-Type: application/x-www-form-urlencoded</span><br>$ curl -X POST -d <span class="hljs-string">&#x27;captcha=abcd&amp;phone=13687654321&#x27;</span> http://www.example.com/api<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 显示通信过程</span><br>$ curl -v www.ip.com<br>$ curl --trace output.txt www.ip.com<br>$ curl --trace-ascii output.txt www.ip.com<br><br><span class="hljs-comment"># GET请求</span><br>$ curl -v https://www.example.com<br><br><span class="hljs-comment"># POST请求 &quot;-X POST&quot;可以省略 Content-Type: application/x-www-form-urlencoded</span><br>$ curl -X POST -d <span class="hljs-string">&quot;captcha=abcd&amp;phone=13687654321&quot;</span> http://www.example.com/api<br><br><span class="hljs-comment"># POST请求 json传参 RequestBody</span><br>$ curl -v -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> -d <span class="hljs-string">&#x27;&#123;&quot;captcha&quot;: &quot;abcd&quot;, &quot;phone&quot;: &quot;13687654321&quot;&#125;&#x27;</span> http://www.example.com/login<br><br>$ curl -v -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> -d @login.json http://www.example.com/login<br><br>$ <span class="hljs-built_in">cat</span> login.json<br>&#123;<br>  <span class="hljs-string">&quot;captcha&quot;</span>: <span class="hljs-string">&quot;abcd&quot;</span>,<br>  <span class="hljs-string">&quot;phone&quot;</span>: <span class="hljs-string">&quot;13687654321&quot;</span><br>&#125;<br><br><span class="hljs-comment"># GET请求 发送OAuth2身份验证 PathVariable</span><br>curl -v -H <span class="hljs-string">&quot;Authorization: OAuth &lt;ACCESS_TOKEN&gt;&quot;</span> http://www.example.com/getInfo/&#123;<span class="hljs-built_in">id</span>&#125;<br><br><span class="hljs-comment"># POST请求 发送OAuth2身份验证 Content-Type: application/x-www-form-urlencoded</span><br>curl -v -H <span class="hljs-string">&quot;Authorization: OAuth &lt;ACCESS_TOKEN&gt;&quot;</span> -d <span class="hljs-string">&quot;username=yee&quot;</span> -d <span class="hljs-string">&quot;phone=13687654321&quot;</span>  http://www.example.com/user/list<br><br><span class="hljs-comment"># POST请求 发送OAuth2身份验证 json传参 RequestBody</span><br>curl -v -H <span class="hljs-string">&quot;Authorization: OAuth &lt;ACCESS_TOKEN&gt;&quot;</span> -H <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> -d <span class="hljs-string">&#x27;&#123;&quot;username&quot;: &quot;yee&quot;, &quot;phone&quot;: &quot;13687654321&quot;, &quot;password&quot;: &quot;123456&quot;&#125;&#x27;</span> http://www.example.com/user/add<br><br></code></pre></td></tr></table></figure>
 
 
                 
